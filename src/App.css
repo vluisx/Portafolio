@@ -8,7 +8,7 @@
   flex: 1;
 }
 
-/* Navbar styles */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -51,14 +51,14 @@
   color: var(--accent-secondary);
 }
 
-/* Section styling */
+
 section {
   min-height: 100vh;
   position: relative;
   width: 100%;
 }
 
-/* Background effects */
+
 .bg-glow {
   position: absolute;
   width: 600px;
@@ -68,7 +68,7 @@ section {
   z-index: -1;
   pointer-events: none;
   will-change: transform;
-  transform: translateZ(0); /* Hardware acceleration */
+  transform: translateZ(0); 
   animation: float 20s ease-in-out infinite alternate;
 }
 
@@ -81,7 +81,7 @@ section {
   z-index: -1;
   pointer-events: none;
   will-change: transform;
-  transform: translateZ(0); /* Hardware acceleration */
+  transform: translateZ(0); 
   animation: float 25s ease-in-out infinite alternate-reverse;
 }
 

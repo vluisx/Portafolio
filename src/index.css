@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  /* Color Palette - Neon Dark Mode */
+  
   --bg-color: #050505;
   --bg-secondary: #111111;
   --text-primary: #ffffff;
   --text-secondary: #a0a0a0;
   
-  --accent-primary: #6d28d9; /* Deep Purple */
-  --accent-secondary: #3b82f6; /* Neon Blue */
+  --accent-primary: #6d28d9; 
+  --accent-secondary: #3b82f6; 
   --accent-gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   
-  /* Solid background (optimized replacement for glassmorphism) */
+  
   --glass-bg: rgba(25, 25, 25, 0.95);
   --glass-border: rgba(255, 255, 255, 0.1);
   
-  /* Fonts */
+  
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
@@ -60,7 +60,7 @@ ul {
   list-style: none;
 }
 
-/* Custom Scrollbar */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -75,7 +75,7 @@ ul {
   background: var(--accent-primary);
 }
 
-/* Utility Classes */
+
 @keyframes gradient-shift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -95,7 +95,7 @@ ul {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
-  will-change: transform; /* Mejora rendimiento */
+  will-change: transform; 
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
@@ -104,7 +104,7 @@ ul {
   box-shadow: 0 0 30px rgba(109, 40, 217, 0.15);
 }
 
-/* CSS Native Hovers (Reemplazan a JS whileHover para 0 lag) */
+
 .project-card:hover {
   transform: translateY(-15px) !important;
   box-shadow: 0 25px 50px -12px rgba(109, 40, 217, 0.4);
@@ -118,7 +118,7 @@ ul {
   transform: translateY(-10px) !important;
 }
 
-/* Animación de Círculo Deforme (Blob) */
+
 @keyframes morph {
   0% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
@@ -148,7 +148,7 @@ ul {
   transform: scale(1.05);
 }
 
-/* Button Glow & Shine Effect */
+
 .btn-primary {
   position: relative;
   overflow: hidden;
@@ -157,7 +157,7 @@ ul {
   gap: 0.5rem;
   padding: 1rem 2rem;
   background: var(--text-primary);
-  color: var(--bg-color) !important; /* Ensure it stays dark */
+  color: var(--bg-color) !important; 
   border-radius: 30px;
   font-weight: 600;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -185,7 +185,7 @@ ul {
   left: 100%;
 }
 
-/* Infinite Marquee Background (Zero Lag) */
+
 @keyframes marquee {
   0% { transform: translate3d(0, 0, 0); }
   100% { transform: translate3d(-50%, 0, 0); }
@@ -214,7 +214,7 @@ ul {
   will-change: transform;
 }
 
-/* Text Cycle Animation (Pure CSS) */
+
 @keyframes cycleWords {
   0%, 25% { content: "Ingeniería de Sistemas"; }
   33%, 58% { content: "Desarrollo Web & Móvil"; }

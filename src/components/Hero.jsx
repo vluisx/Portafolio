@@ -82,7 +82,7 @@ const Hero = () => {
             />
           </div>
           
-          {/* Floating Language & Tech Icons */}
+          {}
           <motion.div
             animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}

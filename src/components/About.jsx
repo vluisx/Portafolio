@@ -18,7 +18,7 @@ const About = () => {
         </p>
       </motion.div>
 
-      {/* Timeline / Educación */}
+      {}
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -38,7 +38,7 @@ const About = () => {
         </div>
       </motion.div>
 
-      {/* Grid de Especialidades */}
+      {}
       <div style={styles.grid}>
         {skills.map((skill, index) => (
           <motion.div
@@ -57,14 +57,14 @@ const About = () => {
         ))}
       </div>
 
-      {/* Technologies Marquee */}
+      {}
       <div style={styles.marqueeContainer}>
         <div className="tech-marquee">
           <div className="tech-marquee-content">
             {technologies.map((tech, i) => (
               <span key={i} style={styles.techItem}>{tech}</span>
             ))}
-            {/* Duplicated for infinite scroll */}
+            {}
             {technologies.map((tech, i) => (
               <span key={`dup-${i}`} style={styles.techItem}>{tech}</span>
             ))}

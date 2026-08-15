@@ -22,12 +22,10 @@ const Chatbot = () => {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
-    // Añadir mensaje del usuario
     const newUserMsg = { id: Date.now(), text: inputValue, isBot: false };
     setMessages(prev => [...prev, newUserMsg]);
     setInputValue('');
 
-    // Simular respuesta del bot
     setTimeout(() => {
       const botResponses = [
         "¡Qué interesante! Si deseas contactar a Luis Anderson, te sugiero enviarle un correo o usar el formulario de contacto.",
@@ -47,7 +45,7 @@ const Chatbot = () => {
 
   return (
     <>
-      {/* Botón flotante */}
+      {}
       <motion.button
         className="chatbot-fab"
         onClick={() => setIsOpen(true)}
@@ -60,7 +58,7 @@ const Chatbot = () => {
         <MessageCircle size={28} />
       </motion.button>
 
-      {/* Ventana de Chat */}
+      {}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -71,7 +69,7 @@ const Chatbot = () => {
             style={styles.chatWindow}
             className="glass-card"
           >
-            {/* Header */}
+            {}
             <div style={styles.chatHeader}>
               <div style={styles.headerTitle}>
                 <Bot size={24} color="var(--accent-secondary)" />
@@ -82,7 +80,7 @@ const Chatbot = () => {
               </button>
             </div>
 
-            {/* Mensajes */}
+            {}
             <div style={styles.chatBody}>
               {messages.map((msg) => (
                 <div 
@@ -105,7 +103,7 @@ const Chatbot = () => {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Form */}
+            {}
             <form onSubmit={handleSend} style={styles.chatFooter}>
               <input
                 type="text"
