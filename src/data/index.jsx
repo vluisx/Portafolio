@@ -33,6 +33,7 @@ export const projects = [
     title: 'Plataforma E-Commerce',
     description: 'Sistema completo con autenticación, carrito y panel administrativo.',
     image: 'https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    videoUrl: 'https://cdn.pixabay.com/video/2020/07/08/44170-438318610_tiny.mp4',
     tags: ['React', 'Node.js', 'SQL Server', 'Express'],
     github: '#',
     demo: '#'
@@ -41,6 +42,7 @@ export const projects = [
     title: 'App de Gestión de Tareas',
     description: 'Aplicación Android multiplataforma con actualizaciones en tiempo real y consumo de APIs.',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    videoUrl: 'https://cdn.pixabay.com/video/2019/11/02/28532-370500903_tiny.mp4',
     tags: ['Android', 'Kotlin', 'Supabase', 'API'],
     github: '#',
     demo: '#'
@@ -49,6 +51,7 @@ export const projects = [
     title: 'Generador y Agente IA',
     description: 'Integración de IA Generativa (LLM) en un entorno de red automatizado.',
     image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    videoUrl: 'https://cdn.pixabay.com/video/2023/10/22/186115-877665798_tiny.mp4',
     tags: ['Python', 'LLM', 'React', 'Generative AI'],
     github: '#',
     demo: '#'
@@ -57,6 +60,7 @@ export const projects = [
     title: 'Dashboard Analítico',
     description: 'Análisis de datos financieros mediante Power Query, DAX y gráficos interactivos.',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    videoUrl: 'https://cdn.pixabay.com/video/2021/08/25/86241-592812499_tiny.mp4',
     tags: ['Power BI', 'SQL', 'Data Analytics', 'Business Intelligence'],
     github: '#',
     demo: '#'
@@ -65,6 +69,7 @@ export const projects = [
     title: 'Motor 3D de Videojuego',
     description: 'Desarrollo de un juego en 2D/3D integrando mecánicas, físicas y animaciones.',
     image: 'https://images.unsplash.com/photo-1621416894569-0f39ed31d247?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    videoUrl: 'https://cdn.pixabay.com/video/2022/10/24/136340-764952478_tiny.mp4',
     tags: ['Unity', 'C#', '3D Graphics', '3ds Max'],
     github: '#',
     demo: '#'
@@ -73,6 +78,7 @@ export const projects = [
     title: 'Arquitectura de Red',
     description: 'Diseño e implementación de infraestructura con VLAN, Routing, DHCP y Firewall.',
     image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    videoUrl: 'https://cdn.pixabay.com/video/2019/04/13/22718-330691768_tiny.mp4',
     tags: ['Cisco', 'Packet Tracer', 'Networking', 'Security'],
     github: '#',
     demo: '#'

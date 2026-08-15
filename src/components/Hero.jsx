@@ -76,7 +76,7 @@ const Hero = () => {
         >
           <div className="blob-profile" style={{ width: '100%', maxWidth: '450px', aspectRatio: '1/1', overflow: 'hidden', position: 'relative' }}>
             <img 
-              src="/SonGoku.gif" 
+              src="./SonGoku.gif" 
               alt="Son Goku" 
               style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }}
             />

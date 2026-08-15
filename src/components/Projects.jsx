@@ -1,11 +1,33 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Code } from 'lucide-react';
 import { projects } from '../data';
+import { useState, useRef } from 'react';
 
 const ProjectCard = ({ project, index }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const videoRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    if (videoRef.current) {
+      // Play can return a promise, catch it to avoid errors if unmounted quickly
+      videoRef.current.play().catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
   return (
     <motion.div
       className="glass-card project-card"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -21,8 +43,26 @@ const ProjectCard = ({ project, index }) => {
             src={project.image} 
             alt={project.title} 
             loading="lazy"
-            style={{...styles.image, transition: 'transform 0.3s ease'}}
+            style={{
+              ...styles.media, 
+              opacity: isHovered && project.videoUrl ? 0 : 1,
+              zIndex: 1
+            }}
           />
+          {project.videoUrl && (
+            <video 
+              ref={videoRef}
+              src={project.videoUrl}
+              muted
+              loop
+              playsInline
+              style={{
+                ...styles.media,
+                opacity: isHovered ? 1 : 0,
+                zIndex: 2
+              }}
+            />
+          )}
         </div>
         <div style={styles.content}>
           <h3 style={styles.cardTitle}>{project.title}</h3>
@@ -91,16 +131,23 @@ const styles = {
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
+    cursor: 'pointer'
   },
   imageContainer: {
-    height: '200px',
+    height: '220px',
+    position: 'relative',
     overflow: 'hidden',
     borderBottom: '1px solid var(--glass-border)',
+    background: '#000'
   },
-  image: {
+  media: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
     width: '100%',
     height: '100%',
     objectFit: 'cover',
+    transition: 'opacity 0.5s ease',
   },
   content: {
     padding: '2rem',
@@ -133,6 +180,8 @@ const styles = {
   links: {
     display: 'flex',
     gap: '1rem',
+    position: 'relative',
+    zIndex: 10
   },
   link: {
     display: 'flex',
