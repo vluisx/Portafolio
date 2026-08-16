@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { Globe } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const { t, i18n } = useTranslation();
+  const { t, lang, setLang } = useTranslation();
 
   const handleLanguageChange = (lang) => {
-    i18n.changeLanguage(lang);
+    setLang(lang);
   };
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const currentLang = i18n.language || 'es';
+  const currentLang = lang;
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>

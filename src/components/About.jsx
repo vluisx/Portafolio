@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { usePortfolioData } from '../data';
 import { GraduationCap, Award, Code2 } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 
 const About = () => {
   const { t } = useTranslation();

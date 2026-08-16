@@ -1,5 +1,5 @@
 import { Code, Globe, MessageCircle, Heart } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 
 const Footer = () => {
   const { t } = useTranslation();

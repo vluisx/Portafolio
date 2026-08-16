@@ -1,5 +1,5 @@
 import { Code, Database, Gamepad2, Network } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 
 export const usePortfolioData = () => {
   const { t } = useTranslation();

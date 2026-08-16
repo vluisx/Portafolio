@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Code } from 'lucide-react';
 import { usePortfolioData } from '../data';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 
 const ProjectCard = ({ project, index }) => {
   const { t } = useTranslation();

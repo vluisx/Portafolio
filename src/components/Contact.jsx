@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send, Phone } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 
 const Contact = () => {
   const { t } = useTranslation();

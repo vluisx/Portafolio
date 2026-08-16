@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Code, Briefcase, MessageCircle, Database, Cpu, Terminal, Globe2, FileCode } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 
 const Hero = () => {
   const { t } = useTranslation();
