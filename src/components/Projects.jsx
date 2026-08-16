@@ -1,23 +1,31 @@
-import { motion } from 'framer-motion';
-import { ExternalLink, Code } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Code, LayoutGrid, GalleryHorizontalEnd, LayoutList, Columns } from 'lucide-react';
 import { usePortfolioData } from '../data';
 import { useTranslation } from '../context/LanguageContext';
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, index, viewMode }) => {
   const { t } = useTranslation();
+  
+  const isCarousel = viewMode === 'carousel';
+  
   return (
     <motion.div
+      layout
       className="glass-card project-card"
-      initial={{ opacity: 0, y: 50, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 100 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
       style={{
         ...styles.card,
-        overflow: 'hidden'
+        minWidth: isCarousel ? '350px' : 'auto',
+        maxWidth: isCarousel ? '400px' : 'none',
+        flex: isCarousel ? '0 0 auto' : 'auto',
+        overflow: 'hidden',
       }}
     >
-      <div style={{ width: '100%' }}>
+      <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
         <div style={styles.imageContainer}>
           {project.videoUrl ? (
             <video 
@@ -66,6 +74,7 @@ const ProjectCard = ({ project, index }) => {
 const Projects = () => {
   const { t } = useTranslation();
   const { projects } = usePortfolioData();
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'carousel'
 
   return (
     <section id="projects" style={styles.section}>
@@ -77,13 +86,35 @@ const Projects = () => {
         style={styles.header}
       >
         <h2 style={styles.title}>{t('projects.title')} <span className="text-gradient">{t('projects.title_highlight')}</span></h2>
+        
+        <div style={styles.toggleContainer}>
+          <button 
+            className={`btn-toggle ${viewMode === 'grid' ? 'active' : ''}`}
+            onClick={() => setViewMode('grid')}
+            style={{...styles.toggleBtn, ...(viewMode === 'grid' ? styles.activeToggle : {})}}
+          >
+            <LayoutGrid size={20} /> Grid
+          </button>
+          <button 
+            className={`btn-toggle ${viewMode === 'carousel' ? 'active' : ''}`}
+            onClick={() => setViewMode('carousel')}
+            style={{...styles.toggleBtn, ...(viewMode === 'carousel' ? styles.activeToggle : {})}}
+          >
+            <Columns size={20} /> Carousel
+          </button>
+        </div>
       </motion.div>
 
-      <div style={styles.grid}>
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} index={index} />
-        ))}
-      </div>
+      <motion.div 
+        layout 
+        style={viewMode === 'grid' ? styles.grid : styles.carousel}
+      >
+        <AnimatePresence mode="popLayout">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.title} project={project} index={index} viewMode={viewMode} />
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </section>
   );
 };
@@ -97,11 +128,40 @@ const styles = {
   },
   header: {
     textAlign: 'center',
-    marginBottom: '4rem',
+    marginBottom: '3rem',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   title: {
     fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-    marginBottom: '1rem',
+    marginBottom: '1.5rem',
+  },
+  toggleContainer: {
+    display: 'flex',
+    background: 'rgba(255,255,255,0.05)',
+    padding: '0.4rem',
+    borderRadius: '30px',
+    gap: '0.5rem',
+    border: '1px solid var(--glass-border)',
+  },
+  toggleBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    background: 'transparent',
+    border: 'none',
+    color: 'var(--text-secondary)',
+    padding: '0.6rem 1.2rem',
+    borderRadius: '25px',
+    cursor: 'pointer',
+    fontWeight: 600,
+    transition: 'all 0.3s ease',
+  },
+  activeToggle: {
+    background: 'var(--accent-primary)',
+    color: '#fff',
+    boxShadow: '0 0 15px rgba(99, 102, 241, 0.4)'
   },
   grid: {
     display: 'grid',
@@ -109,10 +169,22 @@ const styles = {
     gap: '2.5rem',
     width: '100%',
   },
+  carousel: {
+    display: 'flex',
+    overflowX: 'auto',
+    gap: '2rem',
+    padding: '1rem 0 2rem 0',
+    width: '100%',
+    scrollSnapType: 'x mandatory',
+    WebkitOverflowScrolling: 'touch',
+    scrollbarWidth: 'thin',
+    scrollbarColor: 'var(--accent-primary) transparent',
+  },
   card: {
-    overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
+    height: '100%',
+    scrollSnapAlign: 'start'
   },
   imageContainer: {
     height: '220px',
