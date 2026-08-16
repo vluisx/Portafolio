@@ -45,6 +45,7 @@ const ProjectCard = ({ project, index }) => {
             loading="lazy"
             style={{
               ...styles.media, 
+              objectFit: project.fit || 'cover',
               opacity: isHovered && project.videoUrl ? 0 : 1,
               zIndex: 1
             }}
@@ -58,6 +59,7 @@ const ProjectCard = ({ project, index }) => {
               playsInline
               style={{
                 ...styles.media,
+                objectFit: project.fit || 'cover',
                 opacity: isHovered ? 1 : 0,
                 zIndex: 2
               }}
@@ -146,7 +148,6 @@ const styles = {
     left: 0,
     width: '100%',
     height: '100%',
-    objectFit: 'cover',
     transition: 'opacity 0.5s ease',
   },
   content: {

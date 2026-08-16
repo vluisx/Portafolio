@@ -2,6 +2,17 @@ import { motion } from 'framer-motion';
 import { Mail, MapPin, Send, Phone } from 'lucide-react';
 
 const Contact = () => {
+  const handleWhatsAppSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const nombre = formData.get('nombre');
+    const mensaje = formData.get('mensaje');
+    const phone = '51963098258';
+    const text = `Hola Luis Anderson, soy ${nombre}. ${mensaje}`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  };
+
   return (
     <section id="contact" style={styles.section}>
       <motion.div
@@ -37,14 +48,14 @@ const Contact = () => {
             <div style={styles.contactItem}>
               <MapPin size={24} color="var(--accent-primary)" />
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={styles.contactText}>Lima, Perú</span>
-                <span style={styles.contactText}>Trujillo, Perú</span>
+                <span style={styles.contactText}>Perú</span>
               </div>
             </div>
           </div>
         </motion.div>
 
         <motion.form
+          onSubmit={handleWhatsAppSubmit}
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -54,17 +65,12 @@ const Contact = () => {
         >
           <div style={styles.inputGroup}>
             <label style={styles.label}>Nombre</label>
-            <input type="text" style={styles.input} placeholder="Tu nombre" />
-          </div>
-          
-          <div style={styles.inputGroup}>
-            <label style={styles.label}>Email</label>
-            <input type="email" style={styles.input} placeholder="tu@email.com" />
+            <input name="nombre" type="text" style={styles.input} placeholder="Tu nombre" required />
           </div>
           
           <div style={styles.inputGroup}>
             <label style={styles.label}>Mensaje</label>
-            <textarea style={styles.textarea} placeholder="¿Cómo puedo ayudarte?" rows="4"></textarea>
+            <textarea name="mensaje" style={styles.textarea} placeholder="¿Cómo puedo ayudarte?" rows="4" required></textarea>
           </div>
           
           <button
@@ -72,7 +78,7 @@ const Contact = () => {
             className="btn-primary"
             style={{ width: '100%', justifyContent: 'center' }}
           >
-            Enviar Mensaje <Send size={18} />
+            Enviar por WhatsApp <Send size={18} />
           </button>
         </motion.form>
       </div>
