@@ -1,6 +1,8 @@
 import { Code, Globe, MessageCircle, Heart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer style={styles.footer}>
       <div style={styles.container}>
@@ -8,13 +10,13 @@ const Footer = () => {
           <div style={styles.brand}>
             <span style={styles.logo}>Dev<span className="text-gradient">Portfolio</span></span>
             <p style={styles.description}>
-              Construyendo experiencias digitales escalables, accesibles y estéticamente perfectas.
+              {t('hero.description')}
             </p>
           </div>
           
           <div style={styles.socials}>
             <a href="#" style={styles.socialIcon} aria-label="Portfolio"><Globe size={20} /></a>
-            <a href="https://github.com/vxnox" target="_blank" rel="noreferrer" style={styles.socialIcon} aria-label="Code"><Code size={20} /></a>
+            <a href="https://github.com/vluisx" target="_blank" rel="noreferrer" style={styles.socialIcon} aria-label="Code"><Code size={20} /></a>
             <a href="#" style={styles.socialIcon} aria-label="Contact"><MessageCircle size={20} /></a>
           </div>
         </div>
@@ -23,7 +25,7 @@ const Footer = () => {
         
         <div style={styles.bottom}>
           <p style={styles.copyright}>
-            © {new Date().getFullYear()} Mi Portafolio. Todos los derechos reservados.
+            © {new Date().getFullYear()} Mi Portafolio. {t('footer.rights')}
           </p>
           <p style={styles.madeWith}>
             Hecho con <Heart size={14} color="#ef4444" style={{ margin: '0 4px' }} /> y React

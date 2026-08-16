@@ -1,14 +1,19 @@
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send, Phone } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const nombre = formData.get('nombre');
     const mensaje = formData.get('mensaje');
     const phone = '51963098258';
-    const text = `Hola Luis Anderson, soy ${nombre}. ${mensaje}`;
+    // Use the translation string and replace placeholders manually since it's just JS logic
+    let text = t('contact.form.whatsapp_message');
+    text = text.replace('{{name}}', nombre).replace('{{message}}', mensaje);
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };
@@ -22,7 +27,7 @@ const Contact = () => {
         transition={{ duration: 0.8 }}
         style={styles.header}
       >
-        <h2 style={styles.title}>Ponte en <span className="text-gradient">Contacto</span></h2>
+        <h2 style={styles.title}>{t('contact.title')} <span className="text-gradient">{t('contact.title_highlight')}</span></h2>
       </motion.div>
 
       <div style={styles.container}>
@@ -33,8 +38,8 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           style={styles.infoBox}
         >
-          <h3 style={styles.infoTitle}>Información de Contacto</h3>
-          <p style={styles.infoText}>¿Tienes un proyecto en mente? Hablemos de cómo puedo ayudarte a hacerlo realidad.</p>
+          <h3 style={styles.infoTitle}>{t('contact.info_title')}</h3>
+          <p style={styles.infoText}>{t('contact.info_text')}</p>
           
           <div style={styles.contactDetails}>
             <div style={styles.contactItem}>
@@ -64,13 +69,13 @@ const Contact = () => {
           style={styles.form}
         >
           <div style={styles.inputGroup}>
-            <label style={styles.label}>Nombre</label>
-            <input name="nombre" type="text" style={styles.input} placeholder="Tu nombre" required />
+            <label style={styles.label}>{t('contact.form.name')}</label>
+            <input name="nombre" type="text" style={styles.input} placeholder={t('contact.form.name_placeholder')} required />
           </div>
           
           <div style={styles.inputGroup}>
-            <label style={styles.label}>Mensaje</label>
-            <textarea name="mensaje" style={styles.textarea} placeholder="¿Cómo puedo ayudarte?" rows="4" required></textarea>
+            <label style={styles.label}>{t('contact.form.message')}</label>
+            <textarea name="mensaje" style={styles.textarea} placeholder={t('contact.form.message_placeholder')} rows="4" required></textarea>
           </div>
           
           <button
@@ -78,7 +83,7 @@ const Contact = () => {
             className="btn-primary"
             style={{ width: '100%', justifyContent: 'center' }}
           >
-            Enviar por WhatsApp <Send size={18} />
+            {t('contact.form.submit')} <Send size={18} />
           </button>
         </motion.form>
       </div>

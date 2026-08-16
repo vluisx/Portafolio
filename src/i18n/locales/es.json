@@ -1,0 +1,98 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy LUIS ANDERSON",
+    "title_part1": "Ingeniería de Sistemas",
+    "title_part2": "Desarrollo Web & Móvil",
+    "title_part3": "Datos, Redes & IA",
+    "title_sub": "Creatividad & Código",
+    "description": "Estudiante de Ingeniería de Sistemas orientado al desarrollo web y móvil, bases de datos, redes e infraestructura. Apasionado por las nuevas tecnologías y el uso de IA.",
+    "cta": "Ver Proyectos"
+  },
+  "about": {
+    "title": "Sobre",
+    "title_highlight": "Mí",
+    "description": "Soy un estudiante de 9no ciclo de Ingeniería de Sistemas en la Universidad César Vallejo (2021 - Actualidad), apasionado por crear soluciones tecnológicas integrales. Mi enfoque abarca desde el desarrollo de software hasta la arquitectura de datos y redes, siempre buscando innovar y aprender.",
+    "stats": {
+      "projects": "Proyectos",
+      "projects_sub": "Completados",
+      "coffee": "Tazas de café",
+      "coffee_sub": "Consumidas",
+      "code": "Líneas de código",
+      "code_sub": "Escritas"
+    },
+    "skills_title": "Habilidades Técnicas",
+    "skills": {
+      "dev": {
+        "title": "Desarrollo Web & Móvil",
+        "description": "Aplicaciones web (React, Node.js) y móviles (Android, Kotlin) con integración de APIs."
+      },
+      "data": {
+        "title": "Bases de Datos & BI",
+        "description": "SQL Server, MySQL, PostgreSQL. Modelado UML en Enterprise Architect y análisis en Power BI."
+      },
+      "games": {
+        "title": "Videojuegos & Diseño 3D",
+        "description": "Desarrollo en Unity con C# (físicas, mecánicas) y modelado 3D en 3ds Max."
+      },
+      "network": {
+        "title": "Redes, Infraestructura & IA",
+        "description": "VLAN, DHCP, Firewall, Cámaras IP. Uso de IA Generativa y Agentes como apoyo."
+      }
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "title_highlight": "Destacados",
+    "code": "Código",
+    "demo": "Demo",
+    "items": {
+      "db": {
+        "title": "Bases de Datos",
+        "description": "Diseño de bases de datos relacionales, consultas SQL, CRUD, procedimientos y funciones."
+      },
+      "bi": {
+        "title": "Business Intelligence",
+        "description": "Dashboards y análisis de datos mediante Power BI, Power Query y DAX."
+      },
+      "mobile": {
+        "title": "Aplicaciones Móviles",
+        "description": "Aplicaciones Android y multiplataforma con integración de APIs y servicios de datos."
+      },
+      "games": {
+        "title": "Videojuegos 2D/3D",
+        "description": "Desarrollo en Unity con C#, incluyendo mecánicas, físicas, animaciones e interacción."
+      },
+      "3d": {
+        "title": "Modelado y Diseño 3D",
+        "description": "Creación de assets, objetos y entornos 3D."
+      },
+      "web": {
+        "title": "Desarrollo Web",
+        "description": "Aplicaciones web con frontend, backend, APIs, autenticación y bases de datos."
+      }
+    }
+  },
+  "contact": {
+    "title": "Ponte en",
+    "title_highlight": "Contacto",
+    "info_title": "Información de Contacto",
+    "info_text": "¿Tienes un proyecto en mente? Hablemos de cómo puedo ayudarte a hacerlo realidad.",
+    "form": {
+      "name": "Nombre",
+      "name_placeholder": "Tu nombre",
+      "message": "Mensaje",
+      "message_placeholder": "¿Cómo puedo ayudarte?",
+      "submit": "Enviar por WhatsApp",
+      "whatsapp_message": "Hola Luis Anderson, soy {{name}}. {{message}}"
+    }
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  }
+}

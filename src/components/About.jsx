@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion';
-import { skills, technologies } from '../data';
+import { usePortfolioData } from '../data';
 import { GraduationCap, Award, Code2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
+  const { skills, technologies } = usePortfolioData();
+
   return (
     <section id="about" className="about-section" style={{...styles.section, position: 'relative', overflow: 'hidden'}}>
       <motion.div
@@ -12,10 +16,9 @@ const About = () => {
         transition={{ duration: 0.8 }}
         style={styles.header}
       >
-        <h2 style={styles.title}>Sobre <span className="text-gradient">Mí</span></h2>
+        <h2 style={styles.title}>{t('about.title')} <span className="text-gradient">{t('about.title_highlight')}</span></h2>
         <p style={styles.description}>
-          Estudiante de Ingeniería de Sistemas orientado al desarrollo web y móvil, bases de datos, 
-          redes e infraestructura. Capacidad de adaptación a nuevas tecnologías y uso de IA como apoyo al desarrollo.
+          {t('about.description')}
         </p>
       </motion.div>
 
@@ -33,7 +36,7 @@ const About = () => {
           <div style={styles.timelineContent}>
             <h3 style={styles.edTitle}>Formación Académica</h3>
             <p style={styles.edDegree}>Ingeniero de Sistemas</p>
-            <p style={styles.edDate}>2021 – Actualidad</p>
+            <p style={styles.edDate}>2021 — Actualidad</p>
           </div>
         </motion.div>
 

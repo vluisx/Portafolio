@@ -1,33 +1,13 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Code } from 'lucide-react';
-import { projects } from '../data';
-import { useState, useRef } from 'react';
+import { usePortfolioData } from '../data';
+import { useTranslation } from 'react-i18next';
 
 const ProjectCard = ({ project, index }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const videoRef = useRef(null);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    if (videoRef.current) {
-      // Play can return a promise, catch it to avoid errors if unmounted quickly
-      videoRef.current.play().catch(() => {});
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
-
+  const { t } = useTranslation();
   return (
     <motion.div
       className="glass-card project-card"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -39,29 +19,26 @@ const ProjectCard = ({ project, index }) => {
     >
       <div style={{ width: '100%' }}>
         <div style={styles.imageContainer}>
-          <img 
-            src={project.image} 
-            alt={project.title} 
-            loading="lazy"
-            style={{
-              ...styles.media, 
-              objectFit: project.fit || 'cover',
-              opacity: isHovered && project.videoUrl ? 0 : 1,
-              zIndex: 1
-            }}
-          />
-          {project.videoUrl && (
+          {project.videoUrl ? (
             <video 
-              ref={videoRef}
               src={project.videoUrl}
+              autoPlay
               muted
               loop
               playsInline
               style={{
                 ...styles.media,
-                objectFit: project.fit || 'cover',
-                opacity: isHovered ? 1 : 0,
-                zIndex: 2
+                objectFit: project.fit || 'cover'
+              }}
+            />
+          ) : (
+            <img 
+              src={project.image} 
+              alt={project.title} 
+              loading="lazy"
+              style={{
+                ...styles.media, 
+                objectFit: project.fit || 'cover'
               }}
             />
           )}
@@ -77,8 +54,8 @@ const ProjectCard = ({ project, index }) => {
           </div>
           
           <div style={styles.links}>
-            <a href={project.github} style={styles.link}><Code size={20} /> Código</a>
-            <a href={project.demo} style={styles.link}><ExternalLink size={20} /> Demo</a>
+            <a href={project.github} style={styles.link}><Code size={20} /> {t('projects.code')}</a>
+            <a href={project.demo} style={styles.link}><ExternalLink size={20} /> {t('projects.demo')}</a>
           </div>
         </div>
       </div>
@@ -87,6 +64,9 @@ const ProjectCard = ({ project, index }) => {
 };
 
 const Projects = () => {
+  const { t } = useTranslation();
+  const { projects } = usePortfolioData();
+
   return (
     <section id="projects" style={styles.section}>
       <motion.div
@@ -96,7 +76,7 @@ const Projects = () => {
         transition={{ duration: 0.8 }}
         style={styles.header}
       >
-        <h2 style={styles.title}>Proyectos <span className="text-gradient">Destacados</span></h2>
+        <h2 style={styles.title}>{t('projects.title')} <span className="text-gradient">{t('projects.title_highlight')}</span></h2>
       </motion.div>
 
       <div style={styles.grid}>
@@ -133,7 +113,6 @@ const styles = {
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
-    cursor: 'pointer'
   },
   imageContainer: {
     height: '220px',
@@ -148,7 +127,6 @@ const styles = {
     left: 0,
     width: '100%',
     height: '100%',
-    transition: 'opacity 0.5s ease',
   },
   content: {
     padding: '2rem',
@@ -177,6 +155,7 @@ const styles = {
     background: 'rgba(255,255,255,0.05)',
     borderRadius: '20px',
     color: 'var(--accent-secondary)',
+    transition: 'all 0.3s ease',
   },
   links: {
     display: 'flex',

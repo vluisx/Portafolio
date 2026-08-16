@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Code, Briefcase, MessageCircle, Database, Cpu, Terminal, Globe2, FileCode } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="home" className="hero-section" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', paddingTop: '5rem' }}>
       <div 
@@ -26,7 +29,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
             >
-              <h2 style={styles.subtitle}>Hola, soy LUIS ANDERSON</h2>
+              <h2 style={styles.subtitle}>{t('hero.greeting')}</h2>
             </motion.div>
             
             <motion.h1
@@ -35,9 +38,9 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
               style={styles.title}
             >
-              <span className="text-cycler"></span> <br />
+              <span className="text-cycler" data-p1={t('hero.title_part1')} data-p2={t('hero.title_part2')} data-p3={t('hero.title_part3')}></span> <br />
               <span style={{ color: 'transparent', WebkitTextStroke: '2px var(--text-primary)' }}>
-                Creatividad & Código
+                {t('hero.title_sub')}
               </span>
             </motion.h1>
           
@@ -47,7 +50,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             style={styles.description}
           >
-            Estudiante de Ingeniería de Sistemas orientado al desarrollo web y móvil, bases de datos, redes e infraestructura. Apasionado por las nuevas tecnologías y el uso de IA.
+            {t('hero.description')}
           </motion.p>
 
           <motion.div
@@ -57,11 +60,11 @@ const Hero = () => {
             style={styles.actionContainer}
           >
             <a href="#projects" className="btn-primary" style={styles.primaryBtn}>
-              Ver Proyectos <ArrowRight size={20} />
+              {t('hero.cta')} <ArrowRight size={20} />
             </a>
             
             <div style={styles.socialLinks}>
-              <a href="https://github.com/vxnox" target="_blank" rel="noreferrer" style={styles.socialIcon}><Code size={24} /></a>
+              <a href="https://github.com/vluisx" target="_blank" rel="noreferrer" style={styles.socialIcon}><Code size={24} /></a>
               <a href="#" style={styles.socialIcon}><Briefcase size={24} /></a>
               <a href="#" style={styles.socialIcon}><MessageCircle size={24} /></a>
             </div>
@@ -85,7 +88,7 @@ const Hero = () => {
           <motion.div
             animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            style={{ position: 'absolute', top: '5%', right: '-5%', background: 'var(--glass-bg)', padding: '0.8rem', borderRadius: '12px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)', color: '#F7DF1E', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}
+            style={{ position: 'absolute', top: '5%', right: '0', background: 'var(--glass-bg)', padding: '0.8rem', borderRadius: '12px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)', color: '#F7DF1E', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}
           >
             <FileCode size={24} /> JS
           </motion.div>
@@ -93,7 +96,7 @@ const Hero = () => {
           <motion.div
             animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            style={{ position: 'absolute', bottom: '10%', left: '-5%', background: 'var(--glass-bg)', padding: '0.8rem', borderRadius: '12px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)', color: '#61DAFB', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}
+            style={{ position: 'absolute', bottom: '10%', left: '0', background: 'var(--glass-bg)', padding: '0.8rem', borderRadius: '12px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)', color: '#61DAFB', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}
           >
             <Code size={24} /> React
           </motion.div>
@@ -101,7 +104,7 @@ const Hero = () => {
           <motion.div
             animate={{ y: [0, -15, 0], rotate: [0, -5, 0] }}
             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            style={{ position: 'absolute', top: '20%', left: '-10%', background: 'var(--glass-bg)', padding: '0.8rem', borderRadius: '12px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)', color: '#3776AB', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}
+            style={{ position: 'absolute', top: '20%', left: '5%', background: 'var(--glass-bg)', padding: '0.8rem', borderRadius: '12px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)', color: '#3776AB', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}
           >
             <Terminal size={24} /> Python
           </motion.div>
@@ -109,7 +112,7 @@ const Hero = () => {
           <motion.div
             animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            style={{ position: 'absolute', bottom: '30%', right: '-15%', background: 'var(--glass-bg)', padding: '0.8rem', borderRadius: '12px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)', color: '#336791', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}
+            style={{ position: 'absolute', bottom: '30%', right: '5%', background: 'var(--glass-bg)', padding: '0.8rem', borderRadius: '12px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)', color: '#336791', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}
           >
             <Database size={24} /> SQL
           </motion.div>

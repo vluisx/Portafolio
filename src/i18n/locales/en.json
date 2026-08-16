@@ -1,0 +1,98 @@
+{
+  "navbar": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm LUIS ANDERSON",
+    "title_part1": "Systems Engineering",
+    "title_part2": "Web & Mobile Dev",
+    "title_part3": "Data, Net & AI",
+    "title_sub": "Creativity & Code",
+    "description": "Systems Engineering student focused on web and mobile development, databases, networking, and infrastructure. Passionate about new technologies and AI.",
+    "cta": "View Projects"
+  },
+  "about": {
+    "title": "About",
+    "title_highlight": "Me",
+    "description": "I am a 9th-cycle Systems Engineering student at Universidad César Vallejo (2021 - Present), passionate about building comprehensive tech solutions. My focus ranges from software development to data and network architecture, always striving to innovate and learn.",
+    "stats": {
+      "projects": "Projects",
+      "projects_sub": "Completed",
+      "coffee": "Cups of coffee",
+      "coffee_sub": "Consumed",
+      "code": "Lines of code",
+      "code_sub": "Written"
+    },
+    "skills_title": "Technical Skills",
+    "skills": {
+      "dev": {
+        "title": "Web & Mobile Development",
+        "description": "Web apps (React, Node.js) and mobile apps (Android, Kotlin) with API integration."
+      },
+      "data": {
+        "title": "Databases & BI",
+        "description": "SQL Server, MySQL, PostgreSQL. UML modeling in Enterprise Architect and data analysis in Power BI."
+      },
+      "games": {
+        "title": "Game & 3D Design",
+        "description": "Development in Unity with C# (physics, mechanics) and 3D modeling in 3ds Max."
+      },
+      "network": {
+        "title": "Networking, Infra & AI",
+        "description": "VLAN, DHCP, Firewalls, IP Cameras. Integration of Generative AI and AI Agents."
+      }
+    }
+  },
+  "projects": {
+    "title": "Featured",
+    "title_highlight": "Projects",
+    "code": "Code",
+    "demo": "Demo",
+    "items": {
+      "db": {
+        "title": "Databases",
+        "description": "Design of relational databases, SQL queries, CRUD, stored procedures, and functions."
+      },
+      "bi": {
+        "title": "Business Intelligence",
+        "description": "Interactive dashboards and data analysis using Power BI, Power Query, and DAX."
+      },
+      "mobile": {
+        "title": "Mobile Applications",
+        "description": "Android and cross-platform applications with API integrations and backend services."
+      },
+      "games": {
+        "title": "2D/3D Video Games",
+        "description": "Game development in Unity with C#, including mechanics, physics, and animations."
+      },
+      "3d": {
+        "title": "3D Modeling & Design",
+        "description": "Creation of 3D assets, objects, characters, and environments."
+      },
+      "web": {
+        "title": "Web Development",
+        "description": "Full-stack web applications with frontend, backend, APIs, authentication, and databases."
+      }
+    }
+  },
+  "contact": {
+    "title": "Get in",
+    "title_highlight": "Touch",
+    "info_title": "Contact Information",
+    "info_text": "Do you have a project in mind? Let's talk about how I can help you make it a reality.",
+    "form": {
+      "name": "Name",
+      "name_placeholder": "Your name",
+      "message": "Message",
+      "message_placeholder": "How can I help you?",
+      "submit": "Send via WhatsApp",
+      "whatsapp_message": "Hi Luis Anderson, I'm {{name}}. {{message}}"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}
