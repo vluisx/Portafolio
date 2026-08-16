@@ -25,9 +25,6 @@ npm install
 # 2. Ejecutar el servidor de desarrollo en tiempo real
 npm run dev
 
-# 3. Construir para producción (Genera la carpeta /dist lista para GitHub Pages o Cloudflare)
-npm run build
-```
 
 ## 🌐 Despliegue
 Este repositorio está preparado para ser desplegado fácilmente en **GitHub Pages** o **Cloudflare Pages**. La configuración de `vite.config.js` ya cuenta con `base: './'` para funcionar con cualquier sub-ruta en la que se instale.
