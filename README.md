@@ -25,9 +25,3 @@ npm install
 # 2. Ejecutar el servidor de desarrollo en tiempo real
 npm run dev
 
-
-## 🌐 Despliegue
-Este repositorio está preparado para ser desplegado fácilmente en **GitHub Pages** o **Cloudflare Pages**. La configuración de `vite.config.js` ya cuenta con `base: './'` para funcionar con cualquier sub-ruta en la que se instale.
-
----
-*Desarrollado con pasión por el código, el diseño y las buenas prácticas.*
