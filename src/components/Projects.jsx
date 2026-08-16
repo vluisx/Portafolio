@@ -1,28 +1,24 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Code, LayoutGrid, GalleryHorizontalEnd, LayoutList, Columns } from 'lucide-react';
+import { ExternalLink, Code, LayoutGrid, Columns, ChevronLeft, ChevronRight } from 'lucide-react';
 import { usePortfolioData } from '../data';
 import { useTranslation } from '../context/LanguageContext';
 
-const ProjectCard = ({ project, index, viewMode }) => {
+const ProjectCard = ({ project, isCarousel }) => {
   const { t } = useTranslation();
-  
-  const isCarousel = viewMode === 'carousel';
   
   return (
     <motion.div
-      layout
       className="glass-card project-card"
-      initial={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.4 }}
       style={{
         ...styles.card,
-        minWidth: isCarousel ? '350px' : 'auto',
-        maxWidth: isCarousel ? '400px' : 'none',
-        flex: isCarousel ? '0 0 auto' : 'auto',
-        overflow: 'hidden',
+        width: isCarousel ? '100%' : 'auto',
+        maxWidth: isCarousel ? '700px' : 'none',
+        margin: isCarousel ? '0 auto' : '0',
       }}
     >
       <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -74,7 +70,16 @@ const ProjectCard = ({ project, index, viewMode }) => {
 const Projects = () => {
   const { t } = useTranslation();
   const { projects } = usePortfolioData();
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'carousel'
+  const [viewMode, setViewMode] = useState('grid');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextProject = () => {
+    setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevProject = () => {
+    setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+  };
 
   return (
     <section id="projects" style={styles.section}>
@@ -105,16 +110,50 @@ const Projects = () => {
         </div>
       </motion.div>
 
-      <motion.div 
-        layout 
-        style={viewMode === 'grid' ? styles.grid : styles.carousel}
-      >
-        <AnimatePresence mode="popLayout">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} viewMode={viewMode} />
+      {viewMode === 'grid' ? (
+        <div style={styles.grid}>
+          {projects.map((project) => (
+            <ProjectCard key={project.title} project={project} isCarousel={false} />
           ))}
-        </AnimatePresence>
-      </motion.div>
+        </div>
+      ) : (
+        <div style={styles.carouselContainer}>
+          <div style={styles.carouselWrapper}>
+            
+            <button onClick={prevProject} style={{...styles.navBtn, left: '-20px'}}>
+              <ChevronLeft size={30} />
+            </button>
+            
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+              <AnimatePresence mode="wait">
+                <ProjectCard 
+                  key={currentIndex} 
+                  project={projects[currentIndex]} 
+                  isCarousel={true} 
+                />
+              </AnimatePresence>
+            </div>
+
+            <button onClick={nextProject} style={{...styles.navBtn, right: '-20px'}}>
+              <ChevronRight size={30} />
+            </button>
+            
+          </div>
+          
+          <div style={styles.dotsContainer}>
+            {projects.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                style={{
+                  ...styles.dot,
+                  ...(currentIndex === idx ? styles.activeDot : {})
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 };
@@ -169,25 +208,66 @@ const styles = {
     gap: '2.5rem',
     width: '100%',
   },
-  carousel: {
+  carouselContainer: {
     display: 'flex',
-    overflowX: 'auto',
-    gap: '2rem',
-    padding: '1rem 0 2rem 0',
+    flexDirection: 'column',
+    alignItems: 'center',
     width: '100%',
-    scrollSnapType: 'x mandatory',
-    WebkitOverflowScrolling: 'touch',
-    scrollbarWidth: 'thin',
-    scrollbarColor: 'var(--accent-primary) transparent',
+    padding: '1rem 0'
+  },
+  carouselWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+    width: '100%',
+    maxWidth: '800px',
+  },
+  navBtn: {
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    background: 'rgba(99, 102, 241, 0.2)',
+    border: '1px solid var(--accent-primary)',
+    color: '#fff',
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    zIndex: 10,
+    transition: 'all 0.3s ease',
+    backdropFilter: 'blur(10px)'
+  },
+  dotsContainer: {
+    display: 'flex',
+    gap: '10px',
+    marginTop: '2rem',
+    justifyContent: 'center'
+  },
+  dot: {
+    width: '12px',
+    height: '12px',
+    borderRadius: '50%',
+    background: 'rgba(255,255,255,0.2)',
+    border: 'none',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease'
+  },
+  activeDot: {
+    background: 'var(--accent-primary)',
+    boxShadow: '0 0 10px rgba(99, 102, 241, 0.8)',
+    transform: 'scale(1.2)'
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
-    height: '100%',
-    scrollSnapAlign: 'start'
+    overflow: 'hidden',
   },
   imageContainer: {
-    height: '220px',
+    height: '250px',
     position: 'relative',
     overflow: 'hidden',
     borderBottom: '1px solid var(--glass-border)',
@@ -201,29 +281,30 @@ const styles = {
     height: '100%',
   },
   content: {
-    padding: '2rem',
+    padding: '2.5rem',
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
   },
   cardTitle: {
-    fontSize: '1.5rem',
+    fontSize: '1.8rem',
     marginBottom: '1rem',
   },
   cardDescription: {
     color: 'var(--text-secondary)',
     marginBottom: '1.5rem',
+    fontSize: '1.1rem',
     flex: 1,
   },
   tags: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '0.5rem',
-    marginBottom: '1.5rem',
+    gap: '0.6rem',
+    marginBottom: '2rem',
   },
   tag: {
-    fontSize: '0.8rem',
-    padding: '0.3rem 0.8rem',
+    fontSize: '0.9rem',
+    padding: '0.4rem 1rem',
     background: 'rgba(255,255,255,0.05)',
     borderRadius: '20px',
     color: 'var(--accent-secondary)',
@@ -239,7 +320,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '0.5rem',
-    fontSize: '0.9rem',
+    fontSize: '1rem',
     fontWeight: 600,
     transition: 'color 0.3s',
   }
